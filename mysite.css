@@ -1,8 +1,9 @@
 .iframe-container {
-   position: relative;
-    padding-bottom: 90%; // (450 ÷ 500 = 0.9 = 90%)
-    height: 0;
-    overflow: hidden;
+  position: fixed;
+    padding: 2em;
+    left: 50%;
+    top: 0%;
+    transform: translateX(-50%);
 }
 .iframe-container iframe {
   position: absolute;
@@ -12,3 +13,4 @@
     height: 100%;
     border: 0;
 }
+
