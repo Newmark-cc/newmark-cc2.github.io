@@ -1,4 +1,5 @@
-#iframe-container {
+<style>
+.iframe-container {
       width:840px;
     height:317px;
     overflow:scroll;     /* if you don't want a scrollbar, set to hidden */
@@ -11,7 +12,7 @@
     min-height:317px;
 }
   
-#iframe-site {
+.iframe-site {
 position: absolute;
 width:300px;       /* set this to approximate width of entire page you're embedding */
 height:200px;      /* determines where the bottom of the page cuts off */
@@ -24,3 +25,4 @@ height:200px;      /* determines where the bottom of the page cuts off */
     -moz-resize:none;
     resize:none;
 }
+</style>
