@@ -12,8 +12,8 @@
 }
   
 #iframe-site {
-/*   width:1000px;       /* set this to approximate width of entire page you're embedding */
-/*    height:2000px;      /* determines where the bottom of the page cuts off */
+width:1000px;       /* set this to approximate width of entire page you're embedding */
+height:2000px;      /* determines where the bottom of the page cuts off */
     margin-left:-1000px; /* clipping left side of page */
     margin-top:-244px;  /* clipping top of page */
     overflow:hidden;
