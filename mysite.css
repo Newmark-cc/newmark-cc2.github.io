@@ -5,6 +5,7 @@
 	}
 
 	.iframe-site {
+		overflow:hidden;
 		border: 0px;
 		margin-left: -1000; /* Положение по горизонтали */
 		margin-top: -33px; /* Положение по вертикали */
