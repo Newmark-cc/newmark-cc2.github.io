@@ -132,23 +132,615 @@
                });
             </script><!-- /T396 -->
          </div>
-        <!-- ФОРМА --> <div class="popup-body" style="background-color: white; height: 100%;"><div id="swiper-payment" class="swiper-container swiper-container-horizontal"><div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(120px, 0px, 0px);"><div class="swiper-payment-slide swiper-slide swiper-slide-active" style="margin-right: 5000px;"><div class="container"><div class="payment-info"><div class="title-for-form"><h2 class="payment-form-title lk-title">Зарегистрируйте&nbsp;cвой<br>Кредитный сканер</h2> <span class="payment-counter-form counter-form">шаг <span class="payment-number-slide">1</span> из <span class="payment-number-slide-all">2</span></span></div> <div class="line-grey"></div></div></div> <div class="step-one-form-container"><form autocomplete="off" action="" data-vv-scope="step-one" class="form form-white-inputs form-js-label"><div class="form-body"><div class="form-body-left"><span class="payment-title-info">Каждый экземпляр уникален и регистрируется на одного человека</span> <div class="form-body-left-wr"><div class="fio"><input autocomplete="off" name="fio" id="fio" type="text" placeholder="" value="" required="required" class="" aria-required="true" aria-invalid="false" data-empty="false"><label>Имя</label> <!----></div> <div class="email"><input autocomplete="off" name="email" type="email" id="pEmail" placeholder="" value="" required="required" class="" aria-required="true" aria-invalid="false" data-empty="false"><label>Email</label></div> <div class="reg-phone"><input autocomplete="off" name="reg-phone" id="reg-phone" type="tel" placeholder="" value="" required="required" class="" aria-required="true" aria-invalid="false" data-empty="true"><label>Телефон</label></div></div> <div style="margin-top: 1em; font-size: 12px;"><label for="checkbox1" class="custom-checkbox"><input id="checkbox1" type="checkbox" name="agreement" autocomplete="off" checked="checked" required="required" aria-required="true" aria-invalid="false"> <span></span>
-                                                                Принимаю условия <a href="/confidentiality/site-agreement" target="_blank"><strong>Пользовательского
+        <!-- ФОРМА -->   <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=es5"></script>
+<div id="app" class="marketing-pages">
+    <div class="body-bg-container">
+        <div class="wrapper">
+            <div class="body-bg"></div>
+            <div class="body-bg-two"></div>
+        </div>
+    </div>
+        <div style="display:none; min-height: 100vh; height: 100%; width: 100%; overflow: hidden; position: absolute;"
+         :class="[popups.aboutPopup || popups.confidentialityPopup || popups.paymentPopup || popups.dropDocumentsPopup ? 'show-popup-marketing': '']"
+         v-show="popups.aboutPopup || popups.confidentialityPopup || popups.paymentPopup || popups.dropDocumentsPopup || statusBar.isShown ">
+        <div id="popups-container" v-bar="{preventParentScroll: true,
+                    unselectableBody: true,
+                    useScrollbarPseudo: true,
+                    overrideFloatingScrollbar: true,
+                    resizeRefresh: true,
+                    resizeDebounce: 0,
+                    scrollingPhantomDelay: 500,
+                    draggingPhantomDelay: 500}" style="height: 100vh;">
+            <div>
+                <div class="wrapper wrapper-status-bar">
+                    
+                    <transition name="fade">
+                        <div
+                             :class="['status-bar-popup', statusBar.type === 'warning' ? 'status-bar-popup-warning': '', statusBar.type === 'error' ? 'status-bar-popup-error': '', !hasActivePopup ? 'status-bar-popup-text-page': '']"
+                                                                                    v-show="statusBar.isShown">
+                            <span class="popup-for-form-text" v-html="statusBar.text"></span>
+                            <span class="close" @click="statusBar.isShown=false">
+                      <svg version="1.1" id="close-svg" xmlns="http://www.w3.org/2000/svg"
+                           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                           viewBox="0 0 16 16"
+                           xml:space="preserve"><path data-v-55b5e907="" d="M14.7,1.3c-0.3-0.4-0.9-0.4-1.3,0c0,0,0,0,0,0L8,6.7L2.6,1.3c-0.3-0.4-0.9-0.4-1.3,0c0,0,0,0,0,0
+                          c-0.4,0.3-0.4,0.9,0,1.3c0,0,0,0,0,0L6.7,8l-5.4,5.4c-0.4,0.3-0.4,0.9,0,1.3c0,0,0,0,0,0C1.4,14.9,1.7,15,1.9,15
+                          c0.2,0,0.5-0.1,0.6-0.3L8,9.3l5.4,5.4c0.2,0.2,0.4,0.3,0.6,0.3c0.2,0,0.5-0.1,0.6-0.3c0.4-0.3,0.4-0.9,0-1.3c0,0,0,0,0,0L9.3,8
+                          l5.4-5.4C15.1,2.2,15.1,1.7,14.7,1.3C14.7,1.3,14.7,1.3,14.7,1.3z" class="st0"></path>
+                      </svg>
+                    </span>
+                        </div>
+                    </transition>
+                </div>
+                <div style="position:relative; z-index: 999; height: 100%;" class="popup popup-payment" :class="{'active-popup' : popups.paymentPopup}">
+                    
+                        
+                            
+                            
+                        
+                    
+                    <div class="popup-cont" id="payment">
+                        <div class="header-wr header-wr-big"></div>
+                        <div class="popup-body" style="background-color: white; height: 100%;">
+                            <div id="swiper-payment" class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-payment-slide swiper-slide">
+                                        <div class="container">
+                                            <div class="payment-info">
+                                                <div class="title-for-form">
+                                                    <h2 class="payment-form-title lk-title"
+                                                        v-html="'Зарегистрируйте&nbsp;cвой&lt;br&gt;Кредитный сканер'"></h2>
+                                                    <span class="payment-counter-form counter-form">шаг <span
+                                                            class="payment-number-slide">1</span> из <span
+                                                            class="payment-number-slide-all">2</span></span>
+                                                </div>
+                                                <div class="line-grey"></div>
+                                            </div>
+                                        </div>
+                                        <div class="step-one-form-container">
+                                            <form autocomplete="off" action=""
+                                                  class="form form-white-inputs form-js-label"
+                                                  data-vv-scope="step-one">
+                                                <div class="form-body">
+                                                    <div class="form-body-left">
+                                                        <span class="payment-title-info">Каждый экземпляр уникален и регистрируется на одного человека</span>
+                                                        <div class="form-body-left-wr">
+                                                            <div class="fio">
+                                                                <input autocomplete='off'
+                                                                       v-model="fioReg"
+                                                                       @blur="protect($event.currentTarget); writeBlurInput('fio');"
+                                                                       @focus="inputEvent($event.currentTarget)"
+                                                                       
+                                                                       v-label-placeholder="'Имя'"
+                                                                       v-validate="{required:true,regex:/^[a-zA-Zа-яёА-ЯЁ0-9.\-_!]{1,254}$/}"
+                                                                       name="fio" id="fio" type="text" placeholder=""
+                                                                       :class="{'focused': fields['$step-one']
+                                        && fields['$step-one'].fio
+                                        && fields['$step-one'].fio.touched
+                                        && fields['$step-one'].fio.dirty}"
+                                                                       value=""
+                                                                       required/>
+                                                                <div class="suggestions" v-if="suggestions">
+                                                                    <div class="suggestion"
+                                                                         @click="selectFio(item.value)"
+                                                                         v-for="item in suggestions">{{item.value}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="email">
+                                                                <input autocomplete='off'
+                                                                       v-model="emailReg"
+                                                                       @blur="protect($event.currentTarget); writeBlurInput('email');"
+                                                                       @focus="inputEvent($event.currentTarget)"
+                                                                       v-label-placeholder="'Email'"
+                                                                       v-validate="{required:true,email:true}"
+                                                                       name="email" type="email"
+                                                                       id="pEmail"
+                                                                       placeholder=""
+                                                                       :class="{'focused': fields['$step-one']
+                                        && fields['$step-one'].email
+                                        && fields['$step-one'].email.touched
+                                        && fields['$step-one'].email.dirty}"
+                                                                       value=""
+                                                                       required/>
+                                                            </div>
+                                                            <div class="reg-phone">
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                <input autocomplete='off'
+                                                                       v-model="phoneReg"
+                                                                       @blur="protect($event.currentTarget); writeBlurInput('phone');"
+                                                                       @focus="inputEvent($event.currentTarget)"
+                                                                       @click="phoneReg.indexOf('+7 (') != 0 ?  phoneReg = '+7 (' : true"
+                                                                       v-label-placeholder="'Телефон'"
+                                                                       v-validate="'required|length:18'"
+                                                                       v-mask="'+7 (###) ###-##-##'"
+                                                                       name="reg-phone" id="reg-phone" type="tel"
+                                                                       placeholder=""
+                                                                       :class="{'focused': fields['$step-one']
+                                        && fields['$step-one']['reg-phone']
+                                        && fields['$step-one']['reg-phone'].touched
+                                        && fields['$step-one']['reg-phone'].dirty}"
+                                                                       value=""
+                                                                       required/>
+                                                            </div>
+                                                        </div>
+                                                        <div style="margin-top: 1em; font-size: 12px">
+                                                            <label class="custom-checkbox" for="checkbox1">
+                                                                <input id="checkbox1" type="checkbox" name="agreement"
+                                                                       v-validate="'required'" autocomplete="off" checked
+                                                                       required/>
+                                                                <span></span>
+                                                                Принимаю условия <a
+                                                                    href="/confidentiality/site-agreement"
+                                                                    target="_blank"><strong>Пользовательского
                                                                         соглашения</strong></a>, даю согласие на
-                                                                обработку персональной информации на условиях <a href="/confidentiality/privacy-policy" target="_blank"><strong>Политики&nbsp;конфиденциальности</strong></a></label></div></div> <div class="form-body-right"><div id="payment-page-button-next" class="btn-confirm-container btn-disable"><button id="pFirstBtn" class="btn-next btn-confirm">Перейти<br>к оплате
-                                                            </button> <span class="btn-arrow"></span></div></div> <p class="payment-form-text-info text-info-for-form"><span class="round-alert-icon"></span> <span class="round-text">Учетная запись будет привязана к&nbsp;указанному номеру телефона.</span></p></div> <div class="line-grey"></div></form></div></div> <div class="swiper-payment-slide swiper-slide swiper-slide-next" style="margin-right: 5000px;"><span id="payment-prev" class="button-arrow button-arrow-back swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"><span class="button-block"><span id="payment-button-prev"></span></span></span> <div class="container"><div class="payment-info"><div class="title-for-form"><h2 class="payment-form-title lk-title">Оплатите&nbsp;cвой<br>Кредитный сканер</h2> <span class="payment-counter-form counter-form">шаг <span class="payment-number-slide">2</span> из <span class="payment-number-slide-all">2</span></span></div> <div class="line-grey"></div></div></div> <div class="step-two-form-container"><div id="step-two-form-form" class="form form-white-inputs form-js-label"><div class="form-body"><div class="form-body-left"><div id="mlo-form-payment-step-two" class="form-body-left-wr"><div><ul id="form-payment-card" class="mlo-form-payment-nav-tabs"><li class="active"><h4 class="mlo-form-payment-title">
-                                                                            Оплата картой</h4></li> <li class=""><h4 class="mlo-form-payment-title">Другие способы
-                                                                            оплаты</h4></li></ul> <div class="tab-content"><div class="tab-pane-card tab-pane"><form autocomplete="off" action="" id="payment-step-two-form" data-vv-scope="step-two" class="form payment-step-two-form form-white-inputs form-js-label"><div class="card-number"><input autocomplete="off" name="card-number" id="card-number" type="text" placeholder="" value="" required="required" class="" aria-required="true" aria-invalid="false" data-empty="true"><label>Номер банковской карты</label></div> <div class="cvv-code"><input autocomplete="new-password" type="password" name="cvv-code" id="cvv-code" placeholder="" value="" required="required" class="" aria-required="true" aria-invalid="false" data-empty="true"><label>CVV-код*</label></div> <div class="valid-until"><input autocomplete="off" name="valid-until" id="valid-until" type="text" placeholder="" value="" required="required" class="" aria-required="true" aria-invalid="false" data-empty="true"><label>Действует до</label></div> <div class="fio"><input autocomplete="off" name="fio-card" id="fio-card" type="text" placeholder="" value="" required="required" class="" aria-required="true" aria-invalid="false" data-empty="true"><label>Имя владельца (как на карте)</label></div></form></div> <div class="tab-pane" style="display: none;"><div id="pay-buttons" class=""><button class="btn-pay"><span class="logo-yandex-money logo-money"></span></button> <button class="btn-pay"><span class="logo-qiwi-koshelek logo-money"></span></button> <button class="btn-pay"><span class="logo-alfa-klik logo-money"></span></button> <button class="btn-pay"><span class="logo-masterpass logo-money"></span></button> <button class="btn-pay"><span class="logo-webmoney logo-money"></span></button> <button class="btn-pay"><span class="logo-svyaznoi logo-money"></span></button> <button class="btn-pay"><span class="logo-evroset logo-money"></span></button></div></div></div></div></div></div> <div class="form-body-right"><div class="form-body-right"><div id="payment-page-button-next" class="btn-confirm-container btn-disable"><button id="payment-button-next" class="btn-next btn-confirm">
+                                                                обработку персональной информации на условиях <a
+                                                                    href="/confidentiality/privacy-policy"
+                                                                    target="_blank"><strong>Политики&nbsp;конфиденциальности</strong></a>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-body-right">
+                                                        <div class="btn-confirm-container"
+                                                             :class="{'btn-disable': disableButtonReg || sendingRequest}"
+                                                             id="payment-page-button-next"
+                                                             @click="onClickPaymentNextBtn($event)">
+                                                            <button id="pFirstBtn" class="btn-next btn-confirm">Перейти<br>к оплате
+                                                            </button>
+                                                            <span class="btn-arrow"></span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="payment-form-text-info text-info-for-form">
+                                                        <span class="round-alert-icon"></span>
+                                                        <span
+                                                            class="round-text">Учетная запись будет привязана к&nbsp;указанному номеру телефона.</span>
+                                                    </p>
+                                                </div>
+                                                <div class="line-grey"></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-payment-slide swiper-slide">
+                    <span class="button-arrow button-arrow-back swiper-button-prev" @click="UndisableSlider()"
+                          id="payment-prev">
+                      <span class="button-block"><span id="payment-button-prev"></span></span>
+                    </span>
+                                        <div class="container">
+                                            <div class="payment-info">
+                                                <div class="title-for-form">
+                                                    <h2 class="payment-form-title lk-title"
+                                                        v-html="'Оплатите&nbsp;cвой&lt;br&gt;Кредитный сканер'"></h2>
+                                                    <span class="payment-counter-form counter-form">шаг <span
+                                                            class="payment-number-slide">2</span> из <span
+                                                            class="payment-number-slide-all">2</span></span>
+                                                </div>
+                                                <div class="line-grey"></div>
+                                            </div>
+                                        </div>
+                                        <div class="step-two-form-container">
+                                            <div id="step-two-form-form"
+                                                 class="form form-white-inputs form-js-label">
+                                                <div class="form-body">
+                                                    <div class="form-body-left">
+                                                        <div class="form-body-left-wr" id="mlo-form-payment-step-two">
+                                                            <div>
+                                                                <ul id="form-payment-card" class="mlo-form-payment-nav-tabs">
+                                                                    <li :class="{ active: sel == 1 }" @click="sel = 1">
+                                                                        <h4 class="mlo-form-payment-title"
+                                                                            @click="[tabsel = 'card', select = 0]">
+                                                                            Оплата картой</h4>
+                                                                    </li>
+                                                                    <li v-if="!isOtherPaymentsDisabled"
+                                                                        :class="{ active: sel == 2 }"
+                                                                        @click="sel = 2">
+                                                                        <h4 class="mlo-form-payment-title"
+                                                                            @click="tabsel = 'PayU'">Другие способы
+                                                                            оплаты</h4>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane-card tab-pane"
+                                                                         v-show="tabsel == 'card'">
+                                                                        <form autocomplete="off" action=""
+                                                                              id="payment-step-two-form"
+                                                                              class="form payment-step-two-form form-white-inputs form-js-label"
+                                                                              data-vv-scope="step-two">
+                                                                            <div class="card-number">
+                                                                                <input autocomplete='off'
+                                                                                       v-model="cardNumberBuy"
+                                                                                       @blur="protect($event.currentTarget)"
+                                                                                       @focus="inputEvent($event.currentTarget)"
+                                                                                       v-label-placeholder="'Номер банковской карты'"
+                                                                                       v-mask="'#### #### #### ####'"
+                                                                                       v-validate="{required:true,regex:/^\d{4}\s\d{4}\s\d{4}\s\d{4}$/i}"
+                                                                                       name="card-number"
+                                                                                       id="card-number" type="text"
+                                                                                       placeholder=""
+                                                                                       value=""
+                                                                                       :class="{'focused': fields['$step-two']
+                                                && fields['$step-two']['card-number']
+                                                && fields['$step-two']['card-number'].touched
+                                                && fields['$step-two']['card-number'].dirty}"
+                                                                                       required/>
+                                                                            </div>
+                                                                            <div class="cvv-code">
+                                                                                <input autocomplete='new-password'
+                                                                                       v-model="cardCvvBuy"
+                                                                                       @blur="protect($event.currentTarget)"
+                                                                                       @focus="inputEvent($event.currentTarget)"
+                                                                                       v-label-placeholder="'CVV-код*'"
+                                                                                       v-mask="'###'"
+                                                                                       v-validate="{required:true,regex:/^\d{3}$/i}"
+                                                                                       type="password"
+                                                                                       name="cvv-code" id="cvv-code"
+                                                                                       placeholder=""
+                                                                                       value=""
+                                                                                       :class="{'focused': fields['$step-two'] && fields['$step-two']['cvv-code'] && fields['$step-two']['cvv-code'].touched && fields['$step-two']['cvv-code'].dirty}"
+                                                                                       required/>
+                                                                            </div>
+                                                                            <div class="valid-until">
+                                                                                <input autocomplete='off'
+                                                                                       v-model="cardDateBuy"
+                                                                                       @blur="protect($event.currentTarget)"
+                                                                                       @focus="inputEvent($event.currentTarget)"
+                                                                                       v-label-placeholder="'Действует до'"
+                                                                                       v-mask="'##/##'"
+                                                                                       v-validate="{required:true,regex:/^(0[1-9]|1[012])[- /.]\d\d$/i, date_format:'MM/yy', inclusion: false, after: ''+ ((new Date).getMonth() < 10 ? '0' + ((new Date).getMonth()) : (new Date).getMonth()) + '/' + (''+(new Date).getFullYear()).slice(2)}"
+                                                                                       name="valid-until"
+                                                                                       id="valid-until" type="text"
+                                                                                       placeholder=""
+                                                                                       value=""
+                                                                                       :class="{'focused': fields['$step-two']
+                                                && fields['$step-two']['valid-until']
+                                                && fields['$step-two']['valid-until'].touched
+                                                && fields['$step-two']['valid-until'].dirty}"
+                                                                                       required/>
+                                                                            </div>
+                                                                            <div class="fio">
+                                                                                <input autocomplete='off'
+                                                                                       v-model="cardFioBuy"
+                                                                                       @blur="protect($event.currentTarget)"
+                                                                                       @focus="inputEvent($event.currentTarget)"
+                                                                                       v-label-placeholder="'Имя владельца (как на карте)'"
+                                                                                       v-validate="{required:true,regex:/^[A-Z]+\s[A-Z]+$/i}"
+                                                                                       name="fio-card" id="fio-card"
+                                                                                       type="text"
+                                                                                       placeholder=""
+                                                                                       value=""
+                                                                                       :class="{'focused': fields['$step-two']
+                                                && fields['$step-two']['fio-card']
+                                                && fields['$step-two']['fio-card'].touched
+                                                && fields['$step-two']['fio-card'].dirty}"
+                                                                                       required/>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="tab-pane"
+                                                                         v-show="tabsel == 'PayU' && !isOtherPaymentsDisabled">
+                                                                        <div id="pay-buttons"
+                                                                             :class="{ selected: select >= 1 }">
+                                                                            <button class="btn-pay"
+                                                                                    :class="{ active: select == 1 }"
+                                                                                    @click="select == 1 ? select = 0 : select = 1">
+                                                                                <span
+                                                                                    class="logo-yandex-money logo-money"></span>
+                                                                            </button>
+                                                                            <button class="btn-pay"
+                                                                                    :class="{ active: select == 2 }"
+                                                                                    @click="select == 2 ? select = 0 : select = 2">
+                                                                                <span
+                                                                                    class="logo-qiwi-koshelek logo-money"></span>
+                                                                            </button>
+                                                                            <button class="btn-pay"
+                                                                                    :class="{ active: select == 3 }"
+                                                                                    @click="select == 3 ? select = 0 : select = 3">
+                                                                                <span
+                                                                                    class="logo-alfa-klik logo-money"></span>
+                                                                            </button>
+                                                                            <button class="btn-pay"
+                                                                                    :class="{ active: select == 4 }"
+                                                                                    @click="select == 4 ? select = 0 : select = 4">
+                                                                                <span
+                                                                                    class="logo-masterpass logo-money"></span>
+                                                                            </button>
+                                                                            <button class="btn-pay"
+                                                                                    :class="{ active: select == 5 }"
+                                                                                    @click="select == 5 ? select = 0 : select = 5">
+                                                                                <span
+                                                                                    class="logo-webmoney logo-money"></span>
+                                                                            </button>
+                                                                            <button class="btn-pay"
+                                                                                    :class="{ active: select == 6 }"
+                                                                                    @click="select == 6 ? select = 0 : select = 6">
+                                                                                <span
+                                                                                    class="logo-svyaznoi logo-money"></span>
+                                                                            </button>
+                                                                            <button class="btn-pay"
+                                                                                    :class="{ active: select == 7 }"
+                                                                                    @click="select == 7 ? select = 0 : select = 7">
+                                                                                <span
+                                                                                    class="logo-evroset logo-money"></span>
+                                                                            </button>
+                                                                            
+                                                                            
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-body-right">
+                                                        <div class="form-body-right">
+                                                            <div class="btn-confirm-container"
+                                                                 :class="{'btn-disable': disableButtonBuy}"
+                                                                 id="payment-page-button-next">
+                                                                <button id="payment-button-next" class="btn-next btn-confirm"
+                                                                        :disabled="paymentInProcess"
+                                                                        @click="select == 0 ? payAfterSignup($event,9) : payAfterSignupEwallet($event, select,9)">
                                                                     Оплатить
                                                                     <br> 340
-                                                                    <span class="rubl"> ₽</span></button> <span class="btn-arrow"></span></div></div></div> <p class="payment-form-text-info text-info-for-form"><span class="round-alert-icon"></span> <span class="round-text">Оплачивать покупку картой легко и безопасно. * — трехзначный код на обратной стороне карты.</span> <!----></p></div> <div class="line-grey"></div></div></div></div> <div class="swiper-payment-slide swiper-slide done-check-list" style="margin-right: 5000px;"><div class="container"><div class="swiper-payment-info"><div class="title-for-form"><h2 class="swiper-payment-form-title lk-title">Покупка
-                                                        подтверждена</h2> <span class="done-icon"></span></div> <div class="line-grey"></div> <p class="text swiper-payment-text">Перейдите по ссылке, чтобы войти в
+                                                                    <span
+                                                                        class="rubl"> ₽</span></button>
+                                                                <span class="btn-arrow"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p class="payment-form-text-info text-info-for-form">
+                                                        <span class="round-alert-icon"></span>
+                                                        <span class="round-text" v-if="tabsel === 'card'">Оплачивать покупку картой легко и безопасно. * — трехзначный код на обратной стороне карты.</span>
+                                                        <span class="round-text" v-if="tabsel === 'PayU'">Другие безопасные способы оплаты позволяют вам осуществить покупку без баковской карты.</span>
+                                                    </p>
+                                                </div>
+                                                <div class="line-grey"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-payment-slide swiper-slide done-check-list">
+                                        <div class="container">
+                                            <div class="swiper-payment-info">
+                                                <div class="title-for-form">
+                                                    <h2 class="swiper-payment-form-title lk-title">Покупка
+                                                        подтверждена</h2>
+                                                    <span class="done-icon"></span>
+                                                </div>
+                                                <div class="line-grey"></div>
+                                                <p class="text swiper-payment-text">Перейдите по ссылке, чтобы войти в
                                                     систему Control.credit и воспользоваться продуктом.<br>Мы отправили
                                                     эту ссылку Вам на email, чтобы Вы могли
-                                                    сделать это позже</p> <div class="btn btn-red btn-to"><span class="text">
+                                                    сделать это позже</p>
+                                                <div class="btn btn-red btn-to" @click="toSignin()">
+                          <span class="text">
                               Перейти
-                          </span> <span class="btn-arrow-block"><span class="btn-arrow"></span></span> <span class="btn-noise-pattern"></span></div></div></div></div></div><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div></div>
-   <!-- ФОРМА -->
+                          </span>
+                                                    <span class="btn-arrow-block"><span class="btn-arrow"></span></span>
+                                                    <span class="btn-noise-pattern"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="position:relative; z-index: 999; height: 100%;" class="popup popup-drop-documents" :class="{'active-popup' : popups.dropDocumentsPopup}">
+                    <div class="body-bg-container" v-if="popups.dropDocumentsPopup">
+                        <div class="wrapper">
+                            <div class="body-bg body-bg-big-services"></div>
+                            <div class="body-bg-two body-bg-two-big-services"></div>
+                        </div>
+                    </div>
+                    <div class="popup-cont" id="drop-documents">
+                        <div class="header-wr header-wr-big"></div>
+                        <div class="popup-body" style="background-color: white; height: 100%;">
+                            <div id="swiper-drop-documents" class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-drop-documents-slide swiper-slide">
+                                        <div class="container">
+                                            <div class="drop-documents-info">
+                                                <div class="title-for-form">
+                                                    <h2 class="drop-documents-form-title lk-title">Укажите данные для
+                                                        отправки</h2>
+                                                </div>
+                                                <div class="line-grey"></div>
+                                            </div>
+                                        </div>
+                                        <div class="step-one-form-container">
+                                            <form autocomplete="off" action=""
+                                                  class="form form-white-inputs form-js-label"
+                                                  data-vv-scope="subscribe">
+                                                <div class="form-body">
+                                                    <div class="form-body-left">
+                                                        <div class="form-body-left-wr">
+                                                            <div class="fio">
+                                                                <input autocomplete='off'
+                                                                       v-model="fiReg"
+                                                                       @blur="[protect($event.currentTarget), writeBlurInput('fio')]"
+                                                                       @focus="inputEvent($event.currentTarget)"
+                                                                       v-label-placeholder="'Имя'"
+                                                                       v-validate="{required:true,min:2,regex:/^[a-zA-Zа-яёА-ЯЁ0-9.\-_!]{1,254}$/}"
+                                                                       name="fi" type="text" placeholder=""
+                                                                       id="subFio"
+                                                                       value=""
+                                                                       :class="{'focused': fields['$subscribe']
+                                        && fields['$subscribe']['fi']
+                                        && fields['$subscribe']['fi'].touched
+                                        && fields['$subscribe']['fi'].dirty}"
+                                                                       required/>
+                                                            </div>
+                                                            <div class="email">
+                                                                <input autocomplete='off'
+                                                                       v-model="emailReg"
+                                                                       @blur="protect($event.currentTarget); writeBlurInput('email');"
+                                                                       @focus="inputEvent($event.currentTarget)"
+                                                                       v-label-placeholder="'Почта'"
+                                                                       v-validate="{required:true,email:true}"
+                                                                       name="email" type="email"
+                                                                       id="subEmail"
+                                                                       placeholder="" value=""
+                                                                       :class="{'focused':
+                                        fields['$subscribe']
+                                        && fields['$subscribe']['email']
+                                        && fields['$subscribe']['email'].touched
+                                        && fields['$subscribe']['email'].dirty}"
+                                                                       required/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-body-right">
+                                                        <div class="btn-confirm-container"
+                                                             @click="createLead('3','tofu-scaner-390','OTO','1','ООО НЬЮ МАРК')"
+                                                             :class="{'btn-disable': disableButtonSend}"
+                                                             id="drop-documents-page-button-next">
+                                                            <button id="subBtnFirst" class="btn-next btn-confirm"
+                                                                    @click="DropDocumentsNextBtn($event)">Отправить
+                                                            </button>
+                                                            <span class="btn-arrow"></span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="drop-documents-form-text-info text-info-for-form">
+                                                        <span class="round-alert-icon"></span>
+                                                        <span class="round-text">Мы&nbsp;тщательно храним ваши данные. Вы&nbsp;будете получать только полезную информацию.</span>
+                                                    </p>
+                                                </div>
+                                                <div class="line-grey"></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-drop-documents-slide swiper-slide done-check-list">
+                                        <div class="container">
+                                            <div class="drop-documents-info">
+                                                <div class="title-for-form">
+                                                    <h2 class="drop-documentst-form-title lk-title">Продукт
+                                                        активирован</h2>
+                                                    <span class="done-icon"></span>
+                                                </div>
+                                                <div class="line-grey"></div>
+                                                <p class="text drop-documentst-text">Перейдите по&nbsp;ссылке, чтобы
+                                                    войти в&nbsp;систему. Мы&nbsp;отправили эту ссылку Вам на&nbsp;email,
+                                                    чтобы&nbsp;Вы могли сделать это позже</p>
+                                                <div @click="toSignin()" class="btn btn-red btn-to">
+                          <span class="text">
+                              Перейти
+                          </span>
+                                                    <span class="btn-arrow-block"><span class="btn-arrow"></span></span>
+                                                    <span class="btn-noise-pattern"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="marketing-page" style="height: 100vh; overflow: hidden;">
+        <div v-bar="{preventParentScroll: true}" style="height: 100vh;">
+            <div>
+                <div class="wrapper page" style="max-width: 100%;">
+                    <header id="header" :class="{'white': hasActivePopup}">
+                        <div class="wrapper">
+                            <div
+                                class="header-white-wr  header-white-wr-for-text-page  "></div>
+                            <div
+                                class="header-gradient  header-gradient-for-text-page  "></div>
+                            <span
+                                class="main-logo "
+                                :class="{'black-main-logo': hasActivePopup}">
+                  <svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg"
+                       xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                       viewBox="0 0 113 38" style="enable-background:new 0 0 113 38;"
+                       xml:space="preserve">
+                  <g>
+                      <defs>
+                          <filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="0.2"
+                                  y="0.2" width="112.9"
+                                  height="38">
+                              <feColorMatrix type="matrix"
+                                             values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+                          </filter>
+                      </defs>
+                      <mask maskUnits="userSpaceOnUse" x="0.2" y="0.2" width="112.9" height="38"
+                            id="b_1_">
+                          <g class="st0">
+                              <path id="a_1_" class="st1" d="M0.3,0.2h112.9v38H0.3V0.2z"/>
+                          </g>
+                      </mask>
+                      <path class="st2" d="M12.3,6.2c0,3.3-2.7,6-6,6c-3.3,0-6-2.7-6-6c0-3.3,2.7-6,6-6C9.6,0.2,12.3,2.9,12.3,6.2z M109.8,8.8
+                          c-0.7,0.7-1.6,1.1-2.6,1.1c-1,0-1.9-0.4-2.6-1.1c-0.7-0.7-1.1-1.6-1.1-2.6c0-1,0.4-1.9,1.1-2.6c0.7-0.7,1.6-1.1,2.6-1.1
+                          c1,0,1.9,0.4,2.6,1.1c0.7,0.7,1.1,1.6,1.1,2.6C110.9,7.2,110.5,8.1,109.8,8.8L109.8,8.8z M107.2,0.2c-3.3,0-6,2.7-6,6
+                          c0,3.3,2.7,6,6,6c3.3,0,6-2.7,6-6S110.5,0.2,107.2,0.2L107.2,0.2z M94.3,6.2L85,11.8c-0.5,0.3-1.2,0.2-1.6-0.4c0,0,0,0,0,0
+                          c-0.3-0.5-0.2-1.3,0.4-1.6L88,7.3H21.5c-0.6,0-1.1-0.5-1.1-1.2c0-0.6,0.5-1.2,1.1-1.2H88l-4.2-2.5c-0.5-0.3-0.7-1-0.4-1.6
+                          c0.3-0.5,1-0.7,1.6-0.4c0,0,0,0,0,0C85,0.5,94.3,6.2,94.3,6.2z M8.4,26.4v7.6l-6-8.2c-0.2-0.3-0.6-0.6-1.1-0.6c-0.8,0-1,0.6-1,1.2
+                          v10.4c0,0.6,0.2,1.1,1,1.1c0.8,0,1-0.5,1-1.1v-7.6l6.1,8.2c0.2,0.3,0.6,0.6,1,0.6c0.6,0,1-0.5,1-1.1V26.4c0-0.6-0.2-1.1-1-1.1
+                          C8.6,25.3,8.4,25.8,8.4,26.4L8.4,26.4z M17.8,26.4v10.4c0,0.6,0.4,1.1,1.1,1.1h6.4c0.6,0,1-0.4,1-1c0-0.6-0.4-1-1-1H20v-3.6h4.1
+                          c0.7,0,1.1-0.4,1.1-1c0-0.6-0.4-1-1.1-1H20v-3.2h5.1c0.6,0,1-0.4,1-1c0-0.6-0.4-1-1-1H19C18.2,25.3,17.8,25.8,17.8,26.4L17.8,26.4z
+                           M39.3,30.4l2.2,6.9c0.2,0.7,0.5,0.9,1.1,0.9c0.5,0,0.9-0.3,1.1-0.9l2.8-10c0.3-1,0.4-1.8-0.5-2c-0.9-0.2-1.2,0.5-1.5,1.5l-1.9,7.6
+                          l-2.1-6.6c-0.1-0.5-0.4-0.9-1.1-0.9c-0.7,0-1,0.5-1.1,1l-2.1,6.5l-1.9-7.7c-0.2-0.9-0.6-1.7-1.5-1.4c-1,0.3-0.8,1.3-0.6,2l2.7,9.9
+                          c0.2,0.6,0.5,0.9,1.1,0.9c0.5,0,0.8-0.3,1-0.9C37,37.3,39.3,30.4,39.3,30.4z M59.1,31.9L55.3,26c-0.3-0.4-0.6-0.7-1.1-0.7
+                          c-0.6,0-1,0.4-1,1.2v10.4c0,0.6,0.3,1.1,1,1.1s1-0.5,1-1.1v-7.4l2.7,4.3c0.2,0.4,0.5,0.6,1,0.6c0.5,0,0.8-0.3,1-0.7l2.7-4.4v7.5
+                          c0,0.6,0.4,1.1,1.1,1.1c0.7,0,1.1-0.5,1.1-1.1V26.4c0-0.7-0.3-1.1-1-1.1c-0.5,0-0.9,0.4-1.1,0.7L59.1,31.9L59.1,31.9z M78.8,34.4
+                          l1,2.7c0.3,0.7,0.8,1,1.5,0.8c0.6-0.2,0.7-1,0.5-1.5l-4.3-10.5c-0.2-0.4-0.5-0.8-1.1-0.8c-0.5,0-0.9,0.3-1.1,0.9l-4.1,10.4
+                          c-0.2,0.6-0.2,1.3,0.4,1.5c0.8,0.3,1.3-0.3,1.5-0.9l1-2.6L78.8,34.4L78.8,34.4z M74.7,32.7l1.7-4.6l1.8,4.6H74.7L74.7,32.7z
+                           M88.2,26.7v10.2c0,0.6,0.4,1.1,1.1,1.1c0.7,0,1.1-0.5,1.1-1.1v-4c0.4,0.1,0.8,0.1,1.1,0.1c0.3,0,0.6,0,0.8,0l2.6,4.3
+                          c0.4,0.6,1,1,1.7,0.6c0.6-0.3,0.6-1.1,0.2-1.8l-2.3-3.6c1.4-0.5,2.3-1.7,2.3-3.5c0-2.9-2.1-3.8-4.7-3.8c-1.2,0-2.2,0.1-2.7,0.2
+                          C88.6,25.5,88.2,25.9,88.2,26.7z M91.7,31.3c-0.3,0-0.8,0-1.2-0.1v-3.9c0.5-0.1,0.9-0.1,1.4-0.1c1.6,0,2.6,0.5,2.6,2
+                          C94.4,30.7,93.5,31.3,91.7,31.3z M103.8,26.4v10.5c0,0.6,0.4,1.1,1.1,1.1c0.7,0,1.1-0.5,1.1-1.1v-4.7l4.7,5.2
+                          c0.5,0.6,1.2,0.8,1.8,0.2c0.5-0.5,0.3-1.2-0.2-1.8l-4.2-4.4l3.9-4.2c0.5-0.5,0.6-1.2,0.1-1.6c-0.6-0.5-1.1-0.2-1.6,0.3l-4.5,5.2
+                          v-4.6c0-0.6-0.4-1.1-1.1-1.1C104.1,25.3,103.8,25.8,103.8,26.4L103.8,26.4z"/>
+                  </g>
+                  </svg>
+              </span>
+                            <span class="close-popup btnPlay" :class="{'active-popup': hasActivePopup }"
+                                  @click="closePopup()">
+                <span class="cursor-point"></span>
+                <span class="close-popup-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         width="80" height="80" viewBox="0 0 80 80">
+                    <defs>
+                        <circle id="b" cx="23" cy="23" r="23"/>
+                        <filter id="a" width="252.2%" height="252.2%" x="-76.1%" y="-54.3%"
+                                filterUnits="objectBoundingBox">
+                            <feOffset dy="10" in="SourceAlpha" result="shadowOffsetOuter1"/>
+                            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1"
+                                            stdDeviation="10"/>
+                            <feColorMatrix in="shadowBlurOuter1"
+                                           values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
+                        </filter>
+                    </defs>
+                    <g fill="none" fill-rule="evenodd">
+                        <g transform="translate(19 9)">
+                            <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+                            <use fill="#FFF" xlink:href="#b"/>
+                        </g>
+                        <path fill="#003555" fill-rule="nonzero" stroke="#003555" stroke-width=".5"
+                              d="M48.466 25.565a.885.885 0 0 0-1.282 0L41.74 31.01l-5.443-5.444a.885.885 0 0 0-1.282 0 .885.885 0 0 0 0 1.282l5.444 5.444-5.444 5.443a.885.885 0 0 0 0 1.282.831.831 0 0 0 .641.275.831.831 0 0 0 .64-.275l5.444-5.443 5.444 5.443a.989.989 0 0 0 .64.275.989.989 0 0 0 .642-.275.885.885 0 0 0 0-1.282l-5.444-5.443 5.444-5.444a.885.885 0 0 0 0-1.282z"/>
+                    </g>
+                </svg>
+                    </span>
+              </span>
+                        </div>
+                    </header>
+                    <div class="content-block"><!-- ФОРМА -->
          <div id="rec116361776" class="r t-rec t-rec_pt_105 t-rec_pb_60" style="padding-top:105px;padding-bottom:60px; " data-record-type="43">
             <!-- T030 -->
             <div class="t030">
