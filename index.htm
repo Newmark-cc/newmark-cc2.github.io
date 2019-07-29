@@ -186,7 +186,9 @@
                             <!-- FRAMESTART --> 
          <style type="text/css">
 @media (hover: none){ 
-         
+    #frame-desktop {
+    display: none;
+       }    
     #frame{
     overflow: hidden;
     width:730px;
@@ -203,6 +205,35 @@
     -o-transform-origin: 0 0;
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
+   }
+</style>
+<script type="text/javascript">
+    function loadFrame(){
+        document.getElementById('frame').scrollTop = 104;
+        document.getElementById('frame').scrollLeft = 1500;
+}
+</script>
+<body onload="loadFrame()">
+ 
+
+             <!-- DESKTOP FRAME -->
+   <style type="text/css">
+@media (hover: hover){ 
+    #frame  {
+    display: none;
+       }
+    #frame-desktop{
+    text-align: center;
+    overflow: hidden;
+    width:730px;
+    height:840px;
+    border: 0;
+    
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
 }
 </style>
 <script type="text/javascript">
@@ -210,11 +241,10 @@
         document.getElementById('frame').scrollTop = 104;
         document.getElementById('frame').scrollLeft = 1500;
     }
+
 </script>
- 
-<body onload="loadFrame()">
- 
-<div class="iframe-container" id="frame">
+          }
+   <div class="iframe-container-desctop" id="frame-desktop">
 <iframe src="https://control.credit/tofu-scaner-390" width="1080" height="1920" scrolling="no"></iframe>
    <!-- FRAMEEND -->
          </div> 
