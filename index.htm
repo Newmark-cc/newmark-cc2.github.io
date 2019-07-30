@@ -223,9 +223,12 @@
                }
 </style>
 <script type="text/javascript">
-    function loadFrame(){
+   const canHover = !(matchMedia('(hover: none)').matches);
+if(canHover) {
+   function loadFrame(){
         document.getElementById('frame').scrollTop = 104;
         document.getElementById('frame').scrollLeft = 1500;
+    }
     }
 </script>
  
